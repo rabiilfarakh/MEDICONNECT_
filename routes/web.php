@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\MedecinController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/patient/profile', [PatientController::class, 'showProfile'])->name('patient.profile');
     Route::get('/medecin/profile', [MedecinController::class, 'showProfile'])->name('medecin.profile');
+    Route::get('/admin/profile', [AdminController::class, 'showProfile'])->name('admin.profile');
 });
 
 
