@@ -50,9 +50,9 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         if($request->role == 'medecin'){
-            return view('medecin.profile');
+            return view('medecin.index');
         }else{
-            return view('patient.profile');
+            return view('patient.index');
         }
         
     }

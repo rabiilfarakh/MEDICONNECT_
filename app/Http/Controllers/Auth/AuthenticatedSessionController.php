@@ -36,11 +36,11 @@ class AuthenticatedSessionController extends Controller
             $role = $user->role;
 
             if ($role == 'medecin') {
-                return redirect()->route('medecin.profile');
+                return redirect()->route('medecin.index');
             } elseif ($role == 'patient') {
-                return redirect()->route('patient.profile');
+                return redirect()->route('patient.index');
             } else{
-                return redirect()->route('admin.profile');
+                return redirect()->route('admin.index');
             }
         } else {
             return redirect()->back()->with('error', 'Utilisateur non trouvé.');
