@@ -533,9 +533,9 @@
                     <h6
                       class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light"
                     >
-                      Users
+                      Specialites
                     </h6>
-                    <span class="text-xl font-semibold">{{ $countUsers }}</span>
+                    <span class="text-xl font-semibold">{{$countSpecialites }}</span>
                     <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
                       +2.6%
                     </span>
@@ -567,9 +567,10 @@
                       class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light"
                     >
                       Medecins
-                    <span class="text-xl font-semibold"></span>
+                    </h6>
+                    <span class="text-xl font-semibold">{{$countMedecin }}</span>
                     <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                      +3.1%
+                      +2.6%
                     </span>
                   </div>
                   <div>
@@ -600,9 +601,9 @@
                     >
                       Patients
                     </h6>
-                    <span class="text-xl font-semibold"></span>
+                    <span class="text-xl font-semibold">{{$countPatient }}</span>
                     <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                      +3.1%
+                      +2.6%
                     </span>
                   </div>
                   <div>
