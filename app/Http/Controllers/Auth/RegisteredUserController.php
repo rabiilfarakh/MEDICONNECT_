@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Patient;
+use App\Models\Medecin;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -36,24 +38,29 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['required', 'string', 'in:medecin,patient'],
         ]);
-        
-
+    
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role
         ]);
-
+    
         event(new Registered($user));
-
-        Auth::login($user);
-
-        if($request->role == 'medecin'){
+    
+        if ($request->role === 'medecin') {
+            Medecin::create([
+                'specialty' =>$request->specialite,
+                'user_id' => $user->id,
+            ]);
+    
             return view('medecin.index');
-        }else{
+        } else {
+            Patient::create([
+                'user_id' => $user->id,
+            ]);
+    
             return view('patient.index');
         }
-        
     }
 }
