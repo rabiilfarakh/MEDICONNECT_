@@ -715,6 +715,7 @@
               <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
               <th scope="col" class="px-6 py-4 font-medium text-gray-900">Dosage</th>
               <th scope="col" class="px-6 py-4 font-medium text-gray-900">Quantité</th>
+              <th scope="col" class="px-6 py-4 font-medium text-gray-900">Add</th>
               <th scope="col" class="px-6 py-4 font-medium text-gray-900">Delete</th>
               <th scope="col" class="px-6 py-4 font-medium text-gray-900">Edite</th>
           </tr>
@@ -738,6 +739,18 @@
               </td>
               <td class="px-6 py-4">{{ $medicament->quantite }}</td>
               <td class="px-6 py-4">
+                <div class="flex gap-2">
+                  <form method="POST">
+                    <button type="submit" name="add">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                      </svg>
+                                        
+                    </button>
+                  </form>
+              </div>
+            </td>
+              <td class="px-6 py-4">
                   <div class="flex gap-2">
                     <form method="POST">
                       <button type="submit" name="delete">
@@ -748,6 +761,7 @@
                     </form>
                 </div>
               </td>
+>
               <td class="px-6 py-4">
                 <div class="flex gap-2">
                   <form method="POST">
@@ -759,6 +773,7 @@
                   </form>
               </div>
             </td>
+
               <td class="px-6 py-4">
                   <div class="flex justify-end gap-4">
                       <a x-data="{ tooltip: 'Delete' }" href="#">
