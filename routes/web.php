@@ -30,11 +30,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/patient/index', [PatientController::class, 'showIndex'])->name('patient.index');
-    Route::get('/medecin/index', [MedecinController::class, 'showIndex'])->name('medecin.index');
-    Route::get('/admin/index', [AdminController::class, 'showIndex'])->name('admin.index');
 });
 
+
+Route::middleware(["auth",'admin'])->group(function(){
+    Route::get('/admin/index', [AdminController::class, 'showIndex'])->name('admin.index');
+});
+Route::middleware(["auth",'patient'])->group(function(){
+    Route::get('/patient/index', [PatientController::class, 'showIndex'])->name('patient.index');
+    Route::get('/patient/profile', [PatientController::class, 'showProfile'])->name('patient.profile');
+});
+Route::middleware(["auth",'medecin'])->group(function(){
+    Route::get('/medecin/index', [MedecinController::class, 'showIndex'])->name('medecin.index');
+    Route::get('/medecin/profile', [MedecinController::class, 'showProfile'])->name('medecin.profile');
+});
 
 
 
