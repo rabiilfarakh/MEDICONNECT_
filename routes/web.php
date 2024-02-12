@@ -5,6 +5,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\MedecinController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MedicamentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/', function () {
 });
 
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('delete.user');
+Route::delete('/medicament/{id}', [MedicamentController::class, 'destroy'])->name('delete.medicament');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
