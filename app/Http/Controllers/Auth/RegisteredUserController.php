@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Patient;
 use App\Models\Medecin;
+use App\Models\Specialite;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -22,7 +23,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $specialites = Specialite::all();
+        return view('auth.register',compact('specialites'));
     }
 
     /**

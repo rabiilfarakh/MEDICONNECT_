@@ -11,6 +11,7 @@ class Medecin extends Model
 
     protected $fillable = [
         'user_id',
+        'specialty',
     ];
 
     public function user()

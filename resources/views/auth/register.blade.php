@@ -16,6 +16,18 @@
                     <input type="radio" name="role" value="patient">Patient
                 </div>
 
+                <!-- Specialites -->
+        <!-- Specialites -->
+        <div>
+            <x-input-label for="specialite" :value="__('Specialite')" />
+            <select id="specialite" name="specialite" >
+                <option selected disabled>Choisir une spécialité</option>
+                @foreach($specialites as $specialite)
+                <option name="specialite">{{ $specialite->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
