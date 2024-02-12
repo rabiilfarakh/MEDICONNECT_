@@ -25,6 +25,8 @@ Route::get('/', function () {
 
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('delete.user');
 Route::delete('/medicament/{id}', [MedicamentController::class, 'destroy'])->name('delete.medicament');
+Route::get('/medicaments/{medicament}/edit', [MedicamentController::class, 'edit'])->name('edit.medicament');
+Route::post('/medicaments/create', [MedicamentController::class, 'store'])->name('create.medicament');
 
 
 Route::get('/dashboard', function () {

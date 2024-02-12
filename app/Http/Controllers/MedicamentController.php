@@ -12,4 +12,17 @@ class MedicamentController extends Controller
 
         return redirect()->route('admin.index');
     }
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nom' => 'required|string',
+            'dosage' => 'required|string',
+            'quantite' => 'required|integer',
+        ]);
+
+        Medicament::create($validatedData);
+
+        return redirect()->route('admin.index')
+            ->with('success', 'Médicament ajouté avec succès!');
+    }
 }
