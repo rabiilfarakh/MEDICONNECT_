@@ -23,4 +23,13 @@ class MedicamentController extends Controller
         return redirect()->route('admin.index')
             ->with('success', 'Médicament ajouté avec succès!');
     }
+
+    public function update(Request $request, $id)
+    {
+        $medicament = Medicament::findOrFail($id);
+        $medicament->nom = $request->input('nom');
+        $medicament->save();
+
+        return redirect()->route('admin.index');
+    }
 }
