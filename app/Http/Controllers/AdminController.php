@@ -16,12 +16,13 @@ class AdminController extends Controller
     public function showIndex(){
         $users = User::paginate(4);
         $medicaments = Medicament::paginate(4); 
+        $specialites = Specialite::paginate(4);
         $countUsers = $users->total();
         $countMedicaments = $medicaments->total();
         $countSpecialites = Specialite::count();
         $countMedecin = medecinModel::count();
         $countPatient = Patient::count();
-        return view('admin.index', compact('users', 'countUsers', 'medicaments', 'countMedicaments', 'countMedecin', 'countPatient', 'countSpecialites'));
+        return view('admin.index', compact('users', 'countUsers', 'medicaments', 'countMedicaments','specialites','countMedecin', 'countPatient', 'countSpecialites'));
 
     }
     
