@@ -78,6 +78,59 @@
               </div>
 
 
+              <!-- Pagezz -->
+              <div x-data="{ isActive: false, open: false }">
+                <!-- active classes 'bg-primary-100 dark:bg-primary' -->
+                <a
+                  href="#"
+                  @click="$event.preventDefault(); open = !open"
+                  class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary"
+                  :class="{ 'bg-primary-100 dark:bg-primary': isActive || open }"
+                  role="button"
+                  aria-haspopup="true"
+                  :aria-expanded="(open || isActive) ? 'true' : 'false'"
+                >
+                  <span aria-hidden="true">
+                    <svg
+                      class="w-5 h-5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </span>
+                  <span class="ml-2 text-sm"> Specialites </span>
+                  <span aria-hidden="true" class="ml-auto">
+                    <!-- active class 'rotate-180' -->
+                    <svg
+                      class="w-4 h-4 transition-transform transform"
+                      :class="{ 'rotate-180': open }"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </a>
+                <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Pages">
+                  <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+                  <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+                  <a
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
+                  >
+                  <button id="btn-add-specialite" class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700">Ajouter</button>
+                  </a>
+              </div>
               <!-- Pages links -->
               <div x-data="{ isActive: false, open: false }">
                 <!-- active classes 'bg-primary-100 dark:bg-primary' -->
@@ -563,7 +616,7 @@
           </main>
 
           <!-- pop-->
-          <!-- Bouton pour afficher la pop-up -->
+<!-- Bouton pour afficher la pop-up -->
 
 <div id="add-medicament-popup" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50 hidden">
     <div class="bg-white p-8 rounded shadow-lg">
@@ -583,6 +636,24 @@
     </div>
 </div>
 
+{{-- popup specialite --}}
+<div id="add-specialite-popup" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50 hidden">
+  <div class="bg-white p-8 rounded shadow-lg">
+      <h2 class="text-xl font-bold mb-4">Ajouter une specialite</h2>
+      <form method="POST" action="{{ route('create.specialite') }}">
+        @csrf
+    
+        <div>
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="name" required>
+        </div>
+    
+        <button type="submit">Ajouter</button>
+    </form>
+    
+      <button id="btn-close-popup" class="absolute top-0 right-0 mt-2 mr-2 bg-white p-2 rounded-full text-gray-800 hover:bg-gray-200">&times;</button>
+  </div>
+</div>
 
 
         </div>

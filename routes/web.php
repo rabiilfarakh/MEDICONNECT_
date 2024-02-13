@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MedicamentController;
 use App\Http\Controllers\SpecialiteController;
+use App\Models\Specialite;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::delete('/medicament/{id}', [MedicamentController::class, 'destroy'])->nam
 Route::delete('/specialite/{id}', [SpecialiteController::class, 'destroy'])->name('delete.specialite');
 Route::get('/medicaments/{medicament}/edit', [MedicamentController::class, 'edit'])->name('edit.medicament');
 Route::post('/medicaments/create', [MedicamentController::class, 'store'])->name('create.medicament');
+Route::post('/specialites/create', [SpecialiteController::class, 'store'])->name('create.specialite');
 
 
 Route::get('/dashboard', function () {
