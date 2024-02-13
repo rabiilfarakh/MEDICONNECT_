@@ -32,7 +32,7 @@ Route::get('/medicaments/{medicament}/edit', [MedicamentController::class, 'edit
 Route::post('/medicaments/create', [MedicamentController::class, 'store'])->name('create.medicament');
 Route::post('/specialites/create', [SpecialiteController::class, 'store'])->name('create.specialite');
 Route::patch('/medicament/{id}', [MedicamentController::class, 'update'])->name('medicament.update');
-
+Route::patch('/specialite/{id}', [SpecialiteController::class, 'update'])->name('specialite.update');
 
 
 

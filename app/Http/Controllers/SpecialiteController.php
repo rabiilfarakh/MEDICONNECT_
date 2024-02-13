@@ -26,4 +26,13 @@ class SpecialiteController extends Controller
         return redirect()->route('admin.index')
             ->with('success', 'Specilialite ajouté avec succès!');
     }
+
+    public function update(Request $request, $id)
+    {
+        $medicament = Specialite::findOrFail($id);
+        $medicament->name = $request->input('name');
+        $medicament->save();
+
+        return redirect()->route('admin.index');
+    }
 }

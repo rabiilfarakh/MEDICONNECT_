@@ -593,14 +593,18 @@
                     </form>
                 </div>
               </td>
-              <form method="POST" action="{{ route('specialite.update', ['id' => $specialite->id]) }}">
-                @csrf
-                @method('PATCH')
-                <div class="flex gap-3">
-                    <input type="text" name="nom" value="{{ $specialite->nom }}" class="border border-gray-300 rounded-md p-2 mb-4">
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 h-9 rounded-md hover:bg-blue-600">Enregistrer</button>
+                <td class="px-6 py-4">
+                  <div class="flex gap-2">
+                    <form method="POST" action="{{ route('specialite.update', ['id' => $specialite->id]) }}">
+                      @csrf
+                      @method('PATCH')
+                      <div class="flex gap-3">
+                          <input type="text" name="name" value="{{ $specialite->name }}" class="border border-gray-300 rounded-md p-2 mb-4">
+                          <button type="submit" class="bg-blue-500 text-white px-4 py-2 h-9 rounded-md hover:bg-blue-600">Enregistrer</button>
+                      </div>
+                  </form>
                 </div>
-            </form>
+              </td>
           </tr>
           @endforeach
       </tbody>
