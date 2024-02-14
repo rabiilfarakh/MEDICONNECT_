@@ -128,39 +128,35 @@
                             <div class="flex flex-col space-y-4">
                                 <label for="comment" class="text-gray-700 font-semibold">Leave a Comment</label>
                                 <textarea id="comment" name="comment" rows="5" class="form-textarea border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">Submit</button>
+                                
                             </div>
-                        </form>
+                            <input type="hidden" name="medecin_id" value="{{ $medecin->id }}">
+                            <div class="flex items-center space-x-2">
+                                <label for="rating" class="text-gray-700">Note :</label>
+                                <div>
+                                    <input type="radio" id="rating1" name="rating" value="1" class="hidden" />
+                                    <label for="rating1" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="rating2" name="rating" value="2" class="hidden" />
+                                    <label for="rating2" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="rating3" name="rating" value="3" class="hidden" />
+                                    <label for="rating3" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="rating4" name="rating" value="4" class="hidden" />
+                                    <label for="rating4" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="rating5" name="rating" value="5" class="hidden" />
+                                    <label for="rating5" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
+                                </div>
+                                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">Submit</button>
+                            </form>
                         <!-- End of New Comment Form -->
                     </div>
-                    <form action="" method="POST">
-                        @csrf
-                        <input type="hidden" name="medecin_id" value="{{ $medecin->id }}">
-                        <div class="flex items-center space-x-2">
-                            <label for="rating" class="text-gray-700">Note :</label>
-                            <div>
-                                <input type="radio" id="rating1" name="rating" value="1" class="hidden" />
-                                <label for="rating1" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="rating2" name="rating" value="2" class="hidden" />
-                                <label for="rating2" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="rating3" name="rating" value="3" class="hidden" />
-                                <label for="rating3" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="rating4" name="rating" value="4" class="hidden" />
-                                <label for="rating4" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="rating5" name="rating" value="5" class="hidden" />
-                                <label for="rating5" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                            </div>
-                            
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Soumettre</button>
-                    </form>
                 </div>
             </div>
         </div>
