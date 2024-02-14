@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('medecins', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("specialite_id");
+            $table->string('image')->nullable(); 
             $table->foreign('specialite_id')->references('id')->on('specialites')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

@@ -9,6 +9,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="stylesheet" href="build/tailwind.css">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-sAL2Sf4ov3LEdY3elxKQ3AMfOylMjW6z+T2R8S1DJe7aIjR7uT1KgEp9vfgPFRgi" crossorigin="anonymous">
+
 
   <title>DentalPro</title>
 
@@ -167,11 +169,7 @@
             <h1 class="text-white text-4xl md:text-5xl xl:text-6xl font-bold leading-tight">A better life starts with a
               beautiful
               smile.</h1>
-            <p class="text-blue-100 text-xl md:text-2xl leading-snug mt-4">Welcome to the Dentist Office of Dr. Thomas
-              Dooley,
-              where
-              trust
-              and comfort are priorities.</p>
+            <p class="text-blue-100 text-xl md:text-2xl leading-snug mt-4">Welcome to the practice of Dr. Thomas Dooley, where trust and comfort are our top priorities.</p>
             <a href="#" class="px-8 py-4 bg-teal-500 text-white rounded inline-block mt-8 font-semibold">Book
               Appointment</a>
           </div>
@@ -184,11 +182,9 @@
     <section class="relative px-4 py-16 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 lg:py-32">
       <div class="flex flex-col lg:flex-row lg:-mx-8">
         <div class="w-full lg:w-1/2 lg:px-8">
-          <h2 class="text-3xl leading-tight font-bold mt-4">Welcome to the Dentist Office of Dr. Thomas Dooley</h2>
-          <p class="text-lg mt-4 font-semibold">Excellence in Dentistry in the Heart of NY</p>
-          <p class="mt-2 leading-relaxed">Donec convallis sollicitudin facilisis. Integer nisl ligula, accumsan non
-            tincidunt ac, imperdiet in enim.
-            Donec efficitur ullamcorper metus, eu venenatis nunc. Nam eget neque tempus, mollis sem a, faucibus mi.</p>
+          <h2 class="text-3xl leading-tight font-bold mt-4">Welcome to the General Clinic of Dr. Thomas Dooley</h2>
+          <p class="text-lg mt-4 font-semibold">Excellence in Healthcare in the Heart of New York</p>
+          <p class="mt-2 leading-relaxed">Donec convallis sollicitudin facilisis. Integer nisl ligula, accumsan non tincidunt ac, imperdiet in enim. Proin efficitur ullamcorper metus, eu venenatis nunc. Nam eget neque tempus, mollis sem a, faucibus mi.</p>
         </div>
 
         <div class="w-full lg:w-1/2 lg:px-8 mt-12 lg:mt-0">
@@ -224,7 +220,12 @@
         <div class="md:w-1/2 md:px-4 lg:w-1/4 mb-4">
             <a href="{{ route('specialites.medecins', ['id' => $specialite->id]) }}" class="text-black">
                 <div class="bg-white rounded-lg border border-gray-300 p-8 min-h-full">
-                    <img src="{{asset('images/teeth-whitening.svg')}}" alt="" class="h-20 mx-auto">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="54" height="54">
+                            <path d="{{$specialite->image}}" />
+                        </svg>
+                    </div>
+                    <i class="fa-solid fa-heart-circle-bolt"></i>
                     <h4 class="text-xl font-bold mt-4">{{$specialite->name}}</h4>
                     <p class="mt-1">Let us show you how our experience.</p>
                     <a href="#" class="block mt-4">Read More</a>
@@ -233,6 +234,8 @@
         </div>
         @endforeach
     </div>
+    
+    
     
     
     </section>
