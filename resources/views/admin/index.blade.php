@@ -229,37 +229,14 @@
                   </span>
                 </a>
                 <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" aria-label="Authentication">
-                  <!-- active & hover classes 'text-gray-700 dark:text-light' -->
-                  <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
-                  <a
-                    href="auth/register.html"
-                    role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                  >
-                    Register
-                  </a>
-                  <a
-                    href="auth/login.html"
-                    role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                  >
-                    Login
-                  </a>
-                  <a
-                    href="auth/forgot-password.html"
-                    role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                  >
-                    Forgot Password
-                  </a>
-                  <a
-                    href="auth/reset-password.html"
-                    role="menuitem"
-                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-                  >
-                    Reset Password
-                  </a>
-                </div>
+                  <form method="POST" action="{{ route('logout') }}">
+                      @csrf
+                      <button type="submit" class="text-gray-700 dark:text-light text-sm hover:text-gray-900 dark:hover:text-gray-300">
+                          {{ __('Log Out') }}
+                      </button>
+                  </form>
+              </div>
+              
               </div>
 
 
