@@ -12,10 +12,16 @@ class Medecin extends Model
     protected $fillable = [
         'user_id',
         'specialty',
+        'specialite_id',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function specialite()
+    {
+        return $this->belongsTo(Specialite::class);
     }
 }

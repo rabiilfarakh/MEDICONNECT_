@@ -23,7 +23,7 @@
             <select id="specialite" name="specialite" >
                 <option selected disabled>Choisir une spécialité</option>
                 @foreach($specialites as $specialite)
-                <option name="specialite">{{ $specialite->name }}</option>
+                <option name="specialite" value="{{$specialite->id}}">{{ $specialite->name }}</option>
                 @endforeach
             </select>
         </div>

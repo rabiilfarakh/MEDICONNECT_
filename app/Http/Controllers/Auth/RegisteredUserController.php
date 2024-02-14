@@ -51,9 +51,10 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
     
         if ($request->role === 'medecin') {
+
             Medecin::create([
-                'specialty' =>$request->specialite,
                 'user_id' => $user->id,
+                'specialite_id' =>  $request->specialite
             ]);
     
             return view('medecin.index');

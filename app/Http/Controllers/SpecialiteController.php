@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Medecin;
 use App\Models\Specialite;
 use Illuminate\Http\Request;
 
 class SpecialiteController extends Controller
 {
+    public function showMedecins($id)
+    {
+        $specialite = Specialite::findOrFail($id);
+        $medecins = $specialite->medecins;
+
+        return view('medecin.specialites', compact('specialite', 'medecins'));
+    }
     public function destroy($id){
         $specialite = Specialite::findOrFail($id);
         $specialite->delete();
