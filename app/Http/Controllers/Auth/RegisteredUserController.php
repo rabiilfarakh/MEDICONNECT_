@@ -57,13 +57,13 @@ class RegisteredUserController extends Controller
                 'specialite_id' =>  $request->specialite
             ]);
     
-            return view('medecin.index');
+            return redirect()->route('medecin.index');
         } else {
             Patient::create([
                 'user_id' => $user->id,
             ]);
     
-            return view('patient.index');
+            return redirect()->route('patient.index');
         }
     }
 }
