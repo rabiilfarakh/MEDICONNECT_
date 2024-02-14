@@ -34,6 +34,8 @@ Route::post('/specialites/create', [SpecialiteController::class, 'store'])->name
 Route::patch('/medicament/{id}', [MedicamentController::class, 'update'])->name('medicament.update');
 Route::patch('/specialite/{id}', [SpecialiteController::class, 'update'])->name('specialite.update');
 Route::get('/specialites/{id}/medecins', [SpecialiteController::class, 'showMedecins'])->name('specialites.medecins');
+Route::get('/medecin/{id}', [MedecinController::class, 'showProfile'])->name('medecins.profile');
+
 
 
 
