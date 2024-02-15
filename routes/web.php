@@ -9,7 +9,9 @@ use App\Http\Controllers\MedicamentController;
 use App\Http\Controllers\SpecialiteController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\RendezVousController;
 use App\Models\Comment;
+use App\Models\RendezVous;
 use App\Models\Specialite;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +42,9 @@ Route::get('/specialites/{id}/medecins', [SpecialiteController::class, 'showMede
 Route::get('/medecin/{id}', [MedecinController::class, 'showProfile'])->name('medecins.profile');
 Route::post('/medecin/comment', [CommentController::class, 'storeComment'])->name('medecin.comment');
 Route::post('/rating/store', [RatingController::class, 'storeRating'])->name('rating.store');
+Route::get('/rendez-vous', [RendezVousController::class, 'show'])->name('rendezVous');
+Route::post('/save-appointment', [RendezVousController::class, 'save'])->name('save-appointment');
+
 
 
 

@@ -34,4 +34,10 @@ class Medecin extends Model
     {
         return $this->ratings()->avg('rating');
     }
+
+    public function medecin()
+    {
+        return $this->belongsTo(Medecin::class);
+    }
+
 }
