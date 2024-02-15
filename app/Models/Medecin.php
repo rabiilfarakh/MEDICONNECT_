@@ -24,4 +24,14 @@ class Medecin extends Model
     {
         return $this->belongsTo(Specialite::class);
     }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
+    public function averageRating()
+    {
+        return $this->ratings()->avg('rating');
+    }
 }

@@ -17,11 +17,25 @@
                             <img src="https://randomuser.me/api/portraits/men/94.jpg" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
                             <h1 class="text-xl font-bold">{{$medecin->user->name}}</h1>
                             <p class="text-gray-700">Médecin</p>
+                            <p class="text-yellow-500">
+                                @if($medecin->averageRating())
+                                    @for($i = 1; $i <= 5; $i++)
+                                        @if($i <= $medecin->averageRating())
+                                            &#9733;
+                                        @else
+                                            &#9734;
+                                        @endif
+                                    @endfor
+                                    ({{$medecin->averageRating()}})
+                                @else
+                                    Aucune note disponible
+                                @endif
+                            </p>
                             <div class="mt-6 flex flex-wrap gap-4 justify-center">
                                 <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Prendre rendez-vous</a>
                                 <button name="favorie" onclick="toggleFavorite()" class="focus:outline-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" id="favorite-icon">
-                                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                                     </svg>
                                 </button>
                             </div>
@@ -35,6 +49,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-span-4 sm:col-span-9">
                     <div class="bg-white shadow rounded-lg p-6">
                         <h2 class="text-xl font-bold mb-4">À propos de moi</h2>
