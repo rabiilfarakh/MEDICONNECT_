@@ -85,47 +85,45 @@
                         </div>
                         <!-- End of Sample Comment -->
                     </div>
-                    <form id="comment-form" class="mt-8" action="#" method="POST">
+                    <form id="comment-form" class="mt-8" action="{{ route('medecin.comment') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="patient_id" value="{{ Auth::id() }}">
+                    
                         <div class="flex flex-col space-y-4">
                             <label for="comment" class="text-gray-700 font-semibold">Leave a Comment</label>
                             <textarea id="comment" name="comment" rows="5" class="form-textarea border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                            
                         </div>
+                    
                         <input type="hidden" name="medecin_id" value="{{ $medecin->id }}">
+                    
                         <div class="flex items-center space-x-2">
                             <label for="rating" class="text-gray-700">Note :</label>
-                            <div>
-                                <input type="radio" id="rating1" name="rating" value="1" class="hidden" />
-                                <label for="rating1" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="rating2" name="rating" value="2" class="hidden" />
-                                <label for="rating2" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="rating3" name="rating" value="3" class="hidden" />
-                                <label for="rating3" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="rating4" name="rating" value="4" class="hidden" />
-                                <label for="rating4" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="rating5" name="rating" value="5" class="hidden" />
-                                <label for="rating5" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                            </div>
+                    
+
+                    
                             <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">Submit</button>
-                        </form>
-                    <!-- End of New Comment Form -->
+                        </div>
+                    </form>
+
+                    <form method="POST">
+                        @for ($i = 1; $i <= 5; $i++)
+                        <div>
+                            <div class="flex items-center space-x-2">
+                            <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}" class="text-xl text-yellow-500 cursor-pointer">
+                            <label for="rating{{ $i }}" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
+                            </div>
+                        </div>
+                    @endfor
+                    </form>
+                    
+                        
+
                 </div>
             </div>
         </div>
     </div>
     <script>
-        function toggleFavorite() {
-          var favoriteIcon = document.getElementById('favorite-icon');
-          favoriteIcon.classList.toggle('text-yellow-500');
-        }
+
     </script>
 </body>
 </html>

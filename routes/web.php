@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MedicamentController;
 use App\Http\Controllers\SpecialiteController;
+use App\Http\Controllers\CommentController;
+use App\Models\Comment;
 use App\Models\Specialite;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +37,9 @@ Route::patch('/medicament/{id}', [MedicamentController::class, 'update'])->name(
 Route::patch('/specialite/{id}', [SpecialiteController::class, 'update'])->name('specialite.update');
 Route::get('/specialites/{id}/medecins', [SpecialiteController::class, 'showMedecins'])->name('specialites.medecins');
 Route::get('/medecin/{id}', [MedecinController::class, 'showProfile'])->name('medecins.profile');
+Route::post('/medecin/comment', [CommentController::class, 'storeComment'])->name('medecin.comment');
+
+
 
 
 
