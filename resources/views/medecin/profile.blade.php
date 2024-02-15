@@ -74,17 +74,17 @@
                     </div>
                     <h2 class="text-xl font-bold mt-6 mb-4">Comments</h2>
                     <!-- Comment Section -->
-                    <div id="comments" class="space-y-6">
-                        <!-- Sample Comment -->
-                        <div class="flex space-x-3">
-                            <img src="https://randomuser.me/api/portraits/men/94.jpg" alt="Profile Picture" class="w-10 h-10 rounded-full">
-                            <div class="flex-1 bg-gray-100 rounded-lg p-4">
-                                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas suscipit.</p>
-                                <p class="text-gray-500 text-xs">Posted by John Doe on February 10th, 2024</p>
-                            </div>
+                    @foreach ($comments as $comment)
+                    <div class="flex space-x-3">
+                        <img src="https://randomuser.me/api/portraits/men/94.jpg" alt="Profile Picture" class="w-10 h-10 rounded-full">
+                        <div class="flex-1 bg-gray-100 rounded-lg p-4">
+                            <p class="text-gray-700">{{ $comment->comment }}</p>
+                            <p class="text-gray-500 text-xs">{{ $comment->patient->user->name }} on {{ $comment->created_at }}</p>
                         </div>
-                        <!-- End of Sample Comment -->
                     </div>
+                @endforeach
+                
+                
                     <form id="comment-form" class="mt-8" action="{{ route('medecin.comment') }}" method="POST">
                         @csrf
                         <input type="hidden" name="patient_id" value="{{ Auth::id() }}">
@@ -97,24 +97,22 @@
                         <input type="hidden" name="medecin_id" value="{{ $medecin->id }}">
                     
                         <div class="flex items-center space-x-2">
-                            <label for="rating" class="text-gray-700">Note :</label>
-                    
-
                     
                             <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">Submit</button>
                         </div>
                     </form>
-
                     <form method="POST">
-                        @for ($i = 1; $i <= 5; $i++)
-                        <div>
-                            <div class="flex items-center space-x-2">
-                            <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}" class="text-xl text-yellow-500 cursor-pointer">
-                            <label for="rating{{ $i }}" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                            </div>
+                        <div class="flex items-center space-x-2">
+                            <label for="rating" class="text-gray-700">Note :</label>
+                            @for ($i = 1; $i <= 5; $i++)
+                                <div>
+                                    <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}" class="text-xl text-yellow-500 cursor-pointer">
+                                    <label for="rating{{ $i }}" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
+                                </div>
+                            @endfor
                         </div>
-                    @endfor
                     </form>
+                    
                     
                         
 
