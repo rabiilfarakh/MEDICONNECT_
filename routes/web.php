@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MedicamentController;
 use App\Http\Controllers\SpecialiteController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\RatingController;
 use App\Models\Comment;
 use App\Models\Specialite;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ Route::patch('/specialite/{id}', [SpecialiteController::class, 'update'])->name(
 Route::get('/specialites/{id}/medecins', [SpecialiteController::class, 'showMedecins'])->name('specialites.medecins');
 Route::get('/medecin/{id}', [MedecinController::class, 'showProfile'])->name('medecins.profile');
 Route::post('/medecin/comment', [CommentController::class, 'storeComment'])->name('medecin.comment');
+Route::post('/rating/store', [RatingController::class, 'storeRating'])->name('rating.store');
+
 
 
 

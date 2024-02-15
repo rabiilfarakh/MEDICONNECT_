@@ -76,7 +76,8 @@
                     <!-- Comment Section -->
                     @foreach ($comments as $comment)
                     <div class="flex space-x-3">
-                        <img src="https://randomuser.me/api/portraits/men/94.jpg" alt="Profile Picture" class="w-10 h-10 rounded-full">
+                        <img src="https://randomuser.me/api/portraits/men/{{ rand(1, 99) }}.jpg" alt="Profile Picture" class="w-10 h-10 rounded-full">
+
                         <div class="flex-1 bg-gray-100 rounded-lg p-4">
                             <p class="text-gray-700">{{ $comment->comment }}</p>
                             <p class="text-gray-500 text-xs">{{ $comment->patient->user->name }} on {{ $comment->created_at }}</p>
@@ -101,27 +102,65 @@
                             <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">Submit</button>
                         </div>
                     </form>
-                    <form method="POST">
+                    <form id="rating-form" action="{{ route('rating.store') }}" method="POST">
+                        @csrf
                         <div class="flex items-center space-x-2">
                             <label for="rating" class="text-gray-700">Note :</label>
                             @for ($i = 1; $i <= 5; $i++)
-                                <div>
-                                    <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}" class="text-xl text-yellow-500 cursor-pointer">
-                                    <label for="rating{{ $i }}" class="text-xl text-yellow-500 cursor-pointer">&#9733;</label>
-                                </div>
+                                <button type="submit" name="rating" value="{{ $i }}" class="star-button text-xl">&#9733;</button>
                             @endfor
                         </div>
+                        <input type="hidden" name="medecin_id" value="{{ $medecin->id }}">
+                        <input type="hidden" name="patient_id" value="{{ Auth::id() }}">
+                        <input type="hidden" name="selected_rating" id="selected-rating">
+                        
                     </form>
                     
                     
-                        
-
                 </div>
             </div>
         </div>
     </div>
-    <script>
 
+    <script>
+        const starButtons = document.querySelectorAll('button[name="rating"]');
+        const selectedRatingInput = document.getElementById('selected-rating');
+    
+        starButtons.forEach(button => {
+            button.addEventListener('mouseenter', (event) => {
+                const ratingValue = button.value;
+                starButtons.forEach(btn => {
+                    if (btn.value <= ratingValue) {
+                        btn.style.color = '#f90'; 
+                    } else {
+                        btn.style.color = '#ccc';
+                    }
+                });
+            });
+        });
+    
+        starButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const ratingValue = button.value;
+ 
+                selectedRatingInput.value = ratingValue;
+    
+                starButtons.forEach(btn => {
+                    if (btn.value <= ratingValue) {
+                        btn.style.color = '#f90';
+                    } else {
+                        btn.style.color = '#ccc';
+                    }
+                });
+            });
+        });
     </script>
+    
+    
+    <style>
+         button[name="rating"] {
+            color: #ccc;
+        }
+    </style>
 </body>
 </html>
