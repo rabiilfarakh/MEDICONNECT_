@@ -42,8 +42,9 @@ Route::get('/specialites/{id}/medecins', [SpecialiteController::class, 'showMede
 Route::get('/medecin/{id}', [MedecinController::class, 'showProfile'])->name('medecins.profile');
 Route::post('/medecin/comment', [CommentController::class, 'storeComment'])->name('medecin.comment');
 Route::post('/rating/store', [RatingController::class, 'storeRating'])->name('rating.store');
-Route::get('/rendez-vous', [RendezVousController::class, 'show'])->name('rendezVous');
-Route::post('/save-appointment', [RendezVousController::class, 'save'])->name('save-appointment');
+Route::get('/medecin/{id}/rendez-vous', [RendezVousController::class, 'show'])->name('rendezVous');
+Route::post('/medecin/{id}/rendez-vous', [RendezVousController::class, 'save'])->name('save-appointment');
+
 
 
 

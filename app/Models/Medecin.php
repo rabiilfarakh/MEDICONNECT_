@@ -35,9 +35,14 @@ class Medecin extends Model
         return $this->ratings()->avg('rating');
     }
 
-    public function medecin()
+    public function rendezVous()
     {
-        return $this->belongsTo(Medecin::class);
+        return $this->hasMany(RendezVous::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }

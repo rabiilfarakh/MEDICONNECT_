@@ -8,7 +8,8 @@
     <title>Document</title>
 </head>
 <body class="bg-gray-200 flex justify-center items-center h-screen">
-    <form class="w-full max-w-lg bg-white rounded-lg border border-gray-300 shadow-md p-6" action="{{ route('save-appointment') }}" method="POST">
+    <form class="w-full max-w-lg bg-white rounded-lg border border-gray-300 shadow-md p-6" action="{{ route('save-appointment', ['id' => $medecin->id]) }}" method="POST">
+
         @csrf
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
